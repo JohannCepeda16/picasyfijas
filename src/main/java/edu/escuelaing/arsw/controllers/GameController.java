@@ -3,8 +3,6 @@ package edu.escuelaing.arsw.controllers;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.escuelaing.arsw.services.GameServices;
 
+/**
+ * Constrolador del juego
+ */
 @RestController
 @RequestMapping(value = "/")
 public class GameController {
@@ -19,10 +20,17 @@ public class GameController {
     @Autowired
     GameServices gameServices;
 
+    /**
+     * Constructor de la clase
+     */
     public GameController() {
 
     }
 
+    /**
+     * Despliega un formulario para que el usuario digite los numeros
+     * @return
+     */
     @GetMapping("")
     public String form() {
 
@@ -41,6 +49,11 @@ public class GameController {
         return output;
     }
 
+    /**
+     * Permite jugar y saber cuantas picas y fijas se tienen
+     * @param numbers Lista de numeros para jugar
+     * @return
+     */
     @GetMapping(value = "/play")
     public String play(@RequestParam("numbers") String numbers) {
         try {
